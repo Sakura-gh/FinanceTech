@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage{overpic}
+\usepackage[margin=1.2in]{geometry}
+\usepackage[toc,page]{appendix}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{hyperref} 
+\hypersetup{ 
+colorlinks=true,
+linkcolor=black
+}
+
+\renewcommand\contentsname{目录} 
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+\renewcommand\thesection{\arabic {section}}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ 
+backgroundcolor=\color{white},   
+basicstyle=\footnotesize\ttfamily,       
+columns=fullflexible,
+breaklines=true,                
+captionpos=b,                    
+tabsize=4,
+commentstyle=\color{mygreen},   
+escapeinside={\%*}{*)},         
+keywordstyle=\color{blue},       
+stringstyle=\color{mymauve}\ttfamily,    
+frame=single,
+rulesepcolor=\color{red!20!green!20!blue!20},
+}
+\setlength{\parindent}{0pt} % 不换行
+\graphicspath{{img/}}
+
+\begin{document}
+
+
+\begin{titlepage}
+
+
+    % -------------------------------------------------------------------
+    % You need to edit the details here
+    % -------------------------------------------------------------------
+
+    \begin{center}
+        {\songti\zihao{-2} 浙江大学}\\[1cm]
+        {\songti\zihao{-2} 金融科技导论大作业报告}\\[1cm]
+        {\songti \zihao{-1}{\bfseries Finance Tech Project Report}} \\[1cm]
+        % \linespread{1.2}\huge \zihao{-1}{\bfseries Only One Shot}\\[0.5cm]
+        \linespread{1}
+        \includegraphics[width=8cm]{img/zju.png}\\[1cm]
+        \begin{center}
+            \begin{large}
+                \begin{tabular}{cc}
+                    中文题目:    & 基于自编码降维的信用评分卡         \\
+                    \cline{2-2}                                       \\
+                    英文题目:    & Give me Some Credit: Auto-Encoding \\
+                    \cline{2-2}                                       \\
+                    学生姓名:    & ***                                \\
+                    \cline{2-2}                                       \\
+                    学\qquad 号: & ***                                \\
+                    \cline{2-2}                                       \\
+                    指导老师:    & 郑小林                             \\
+                    \cline{2-2}                                       \\
+                    专业类别:    & 计算机科学与技术                   \\
+                    \cline{2-2}                                       \\
+                    所在学院:    & 计算机科学与技术学院               \\
+                    \cline{2-2}                                       \\
+                \end{tabular}
+            \end{large}
+        \end{center}
+        \LARGE\today
+    \end{center}
+
+\end{titlepage}
+
+
+% -------------------------------------------------------------------
+% Declaration
+% -------------------------------------------------------------------
+
+\newpage
+\thispagestyle{empty} %不显示页码
+
+\section*{\LARGE  Declare 申明}
+\paragraph{}
+\textit{\bfseries \songti
+    特在此声明，“基于自编码降维的信用评分卡”项目所提出的自编码降维在风控领域的应用方法、可视化及实验结果对比与分析，均为个人独立工作成果，并没有对任何现有成果进行借鉴。本文旨在提出一种新的特征处理方法，并不强求实验结果能在kaggle上名列前茅。}
+\section*{\LARGE  模块概览}
+
+\noindent  \textit{\bfseries \songti 基础特征工程模块:} \quad{数据初步清洗、WOE编码}\\[1mm]
+\rule[1em]{30em}{0.5pt}
+
+\noindent  \textit{\bfseries \songti 自编码降维模块:}\quad{利用Auto-encoder神经网络进行特征转换与提取}\\[1mm]
+\rule[1em]{30em}{0.5pt}
+
+\noindent \textit{\bfseries \songti 概率分类器模块:}\quad{随机森林、LightGBM等树模型、LR、DNN等}\\[1mm]
+\rule[1em]{30em}{0.5pt}
+
+% -------------------------------------------------------------------
+% Abstract
+% -------------------------------------------------------------------
+
+% \input{sections/abstract.tex}
+
+
+% -------------------------------------------------------------------
+% Contents, list of figures, list of tables
+% -------------------------------------------------------------------
+
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}%目录页不显示页码
+
+% -------------------------------------------------------------------
+% Main sections (as required)
+% -------------------------------------------------------------------
+
+\newpage
+\setcounter{page}{1}%从下面开始编页码
+\section{研究背景与意义}
+\input{sections/background.tex}
+
+\newpage
+\section{国内外研究现状与存在问题}
+\input{sections/problem_analysis.tex}
+
+\newpage
+\section{研究目标与研究内容}
+\input{sections/goal.tex}
+
+\newpage
+\section{研究方法与模型思路}
+\input{sections/model.tex}
+
+\newpage
+\section{数据集分析}
+\input{sections/dataset.tex}
+
+\newpage
+\section{实验与分析}
+\input{sections/analysis.tex}
+
+\newpage
+\section{结论与展望}
+\input{sections/conclusion.tex}
+
+% -------------------------------------------------------------------
+% Appendices
+% -------------------------------------------------------------------
+
+% \begin{appendices}
+%     \input{sections/appendix.tex}
+% \end{appendices}
+
+\newpage
+\end{document}

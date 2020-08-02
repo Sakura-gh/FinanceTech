@@ -325,6 +325,44 @@ PyTorch实现Auto-encoder自编码器的模型如下：
 \end{figure}
 
 上图中可以看出，神经网络分类器确实优于逻辑回归，但又劣于自编码加树模型的表现。
+\subsection{评分卡的制作}
+标准评分卡采用的格式是评分卡中的每一个变量都遵循一系列IF-THEN法则。数据记录中每一个变量的值都适用此法则的结果决定了该特定变量所分配的分支，总分就是评分卡中所有变量的贡献的和。
+此处仅用传统特征工程+LR分类器得到的结果进行评分卡的制作，作为示例。本文其他模型的评分卡制作同理。\cite{ref5} \\
+评分卡制作过程如下：
+\begin{lstlisting}[frame=shadowbox]
+	intercept=LR.intercept_
+	coef=LR.coef_
+	coe=coef[0].tolist()
+	coe_df=pd.DataFrame({'feature':IV_info,'coe':coe})
+
+	import math
+	B=20/math.log(2)
+	A=600+B*math.log(1/20)
+	#basic score
+	score=round(A-B*intercept[0],0)
+
+	featurelist = []
+	woelist = []
+	cutlist = []
+	for k,v in woe_dict.items():
+	if k in IV_info:
+	for n in range(0,len(v)):
+	featurelist.append(k)
+	woelist.append(v[n])
+	cutlist.append(cut_dict[k][n])
+	scoreboard = pd.DataFrame({'feature':featurelist,'woe':woelist,'cut':cutlist},
+	columns=['feature','cut','woe'])
+	score_df=pd.merge(scoreboard,coe_df)
+	score_df['score']=round(-B*score_df['woe']*score_df['coe'],0)
+	score_df.drop('coe',axis=1,inplace=True)
+	score_df
+\end{lstlisting}
+得到评分卡：
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{score.png}
+	\caption{评分卡}
+\end{figure}
 
 \subsection{实验总结与分析}
 

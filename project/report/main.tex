@@ -3,7 +3,7 @@
 \usepackage[margin=1.2in]{geometry}
 \usepackage[toc,page]{appendix}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{lipsum}
 \usepackage{caption}
 \usepackage{listings}
@@ -13,7 +13,7 @@
 \usepackage{amsmath}  
 \usepackage{ctex}
 \usepackage{float}
-\usepackage{hyperref} 
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
 \hypersetup{ 
 colorlinks=true,
 linkcolor=black
@@ -43,45 +43,47 @@ rulesepcolor=\color{red!20!green!20!blue!20},
 \setlength{\parindent}{0pt} % 不换行
 \graphicspath{{img/}}
 
+
+
 \begin{document}
 
 
 \begin{titlepage}
 
 
-    % -------------------------------------------------------------------
-    % You need to edit the details here
-    % -------------------------------------------------------------------
+	% -------------------------------------------------------------------
+	% You need to edit the details here
+	% -------------------------------------------------------------------
 
-    \begin{center}
-        {\songti\zihao{-2} 浙江大学}\\[1cm]
-        {\songti\zihao{-2} 金融科技导论大作业报告}\\[1cm]
-        {\songti \zihao{-1}{\bfseries Finance Tech Project Report}} \\[1cm]
-        % \linespread{1.2}\huge \zihao{-1}{\bfseries Only One Shot}\\[0.5cm]
-        \linespread{1}
-        \includegraphics[width=8cm]{img/zju.png}\\[1cm]
-        \begin{center}
-            \begin{large}
-                \begin{tabular}{cc}
-                    中文题目:    & 基于自编码降维的信用评分卡         \\
-                    \cline{2-2}                                       \\
-                    英文题目:    & Give me Some Credit: Auto-Encoding \\
-                    \cline{2-2}                                       \\
-                    学生姓名:    & ***                                \\
-                    \cline{2-2}                                       \\
-                    学\qquad 号: & ***                                \\
-                    \cline{2-2}                                       \\
-                    指导老师:    & 郑小林                             \\
-                    \cline{2-2}                                       \\
-                    专业类别:    & 计算机科学与技术                   \\
-                    \cline{2-2}                                       \\
-                    所在学院:    & 计算机科学与技术学院               \\
-                    \cline{2-2}                                       \\
-                \end{tabular}
-            \end{large}
-        \end{center}
-        \LARGE\today
-    \end{center}
+	\begin{center}
+		{\songti\zihao{-2} 浙江大学}\\[1cm]
+		{\songti\zihao{-2} 金融科技导论大作业报告}\\[1cm]
+		{\songti \zihao{-1}{\bfseries Finance Tech Project Report}} \\[1cm]
+		% \linespread{1.2}\huge \zihao{-1}{\bfseries Only One Shot}\\[0.5cm]
+		\linespread{1}
+		\includegraphics[width=8cm]{img/zju.png}\\[1cm]
+		\begin{center}
+			\begin{large}
+				\begin{tabular}{cc}
+					中文题目:    & 基于自编码降维的信用评分卡         \\
+					\cline{2-2}                                       \\
+					英文题目:    & Give me Some Credit: Auto-Encoding \\
+					\cline{2-2}                                       \\
+					学生姓名:    & 葛浩\quad 朱祉盈                   \\
+					\cline{2-2}                                       \\
+					学\qquad 号: & 3180103494	\quad 3180103536         \\
+					\cline{2-2}                                       \\
+					指导老师:    & 郑小林                             \\
+					\cline{2-2}                                       \\
+					专业类别:    & 计算机科学与技术                   \\
+					\cline{2-2}                                       \\
+					所在学院:    & 计算机科学与技术学院               \\
+					\cline{2-2}                                       \\
+				\end{tabular}
+			\end{large}
+		\end{center}
+		\LARGE\today
+	\end{center}
 
 \end{titlepage}
 
@@ -96,7 +98,7 @@ rulesepcolor=\color{red!20!green!20!blue!20},
 \section*{\LARGE  Declare 申明}
 \paragraph{}
 \textit{\bfseries \songti
-    特在此声明，“基于自编码降维的信用评分卡”项目所提出的自编码降维在风控领域的应用方法、可视化及实验结果对比与分析，均为个人独立工作成果，并没有对任何现有成果进行借鉴。本文旨在提出一种新的特征处理方法，并不强求实验结果能在kaggle上名列前茅。}
+	特在此声明，“基于自编码降维的信用评分卡”项目所提出的自编码降维在风控领域的应用方法、可视化及实验结果对比与分析，均为个人独立工作成果，并没有对任何现有成果进行借鉴。本文旨在提出一种新的特征处理方法，并不强求实验结果能在kaggle上名列前茅。}
 \section*{\LARGE  模块概览}
 
 \noindent  \textit{\bfseries \songti 基础特征工程模块:} \quad{数据初步清洗、WOE编码}\\[1mm]
@@ -166,4 +168,10 @@ rulesepcolor=\color{red!20!green!20!blue!20},
 % \end{appendices}
 
 \newpage
+
+{
+	\small
+	\bibliographystyle{unsrt}
+	\bibliography{saliency}
+}
 \end{document}
